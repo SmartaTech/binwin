@@ -1,6 +1,3 @@
 {
-                                                  "files.autoSave": "onFocusChange",
-                                                  "chat.agent.maxRequests": 50,
-                                                "window.density.editorTabHeight": "compact",
-                                                "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501
 }

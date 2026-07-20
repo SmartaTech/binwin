@@ -789,3 +789,6 @@ img.reyecle-imge {
     transform: rotate(360deg);
   }
 }
+.imag-market-place > img {
+    width: stretch;
+}

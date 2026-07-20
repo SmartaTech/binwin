@@ -203,7 +203,7 @@ var LeafScene = function(el) {
         image: 1
       };
       leaf.el.className = 'leaf';
-      leaf.el.src = '/assets/images/icons/green-leaf.svg';
+      leaf.el.src = 'assets/images/icons/green-leaf.svg';
       leaf.el.alt = '';
       this._resetLeaf(leaf);
       this.leaves.push(leaf);
