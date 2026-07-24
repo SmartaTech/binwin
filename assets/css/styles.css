@@ -745,6 +745,7 @@ img.footer-logo{
   pointer-events: none;
   overflow: hidden;
   border-radius: 50px;
+  z-index: 2222;
 }
 
 .carousel-item {
@@ -791,4 +792,30 @@ img.reyecle-imge {
 }
 .imag-market-place > img {
     width: stretch;
+}
+
+
+img.reyecle-imge1 {
+    z-index: 111;
+    position: absolute;
+    top: 0px;
+
+}
+video.hero-video {
+    height: 465px;
+}
+.position-relative{
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video{
+    width: 100%;
+    height: auto;
+}
+img.reyecle-imge2 {
+    position: absolute;
+    top: 36%;
+    left: 26%;
+    max-width: 357px;
 }
