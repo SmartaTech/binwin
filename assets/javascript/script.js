@@ -16,18 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
   }
 
-  // ---- header hide on scroll down + shadow on scroll ----
-  const header = document.getElementById('siteHeader');
-  if (header) {
-    let lastY = window.scrollY;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > lastY && y > 140) { header.classList.add('hide'); } else { header.classList.remove('hide'); }
-      header.classList.toggle('scrolled', y > 20);
-      lastY = y;
-    }, { passive: true });
-  }
-
   // ---- reveal on scroll ----
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length) {
@@ -35,6 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     revealEls.forEach(el => io.observe(el));
+  }
+
+  // ---- hero typing effect ----
+  const typingHeadline = document.getElementById('heroTypingText');
+  if (typingHeadline) {
+    const rawText = typingHeadline.dataset.text?.trim() || '';
+    const text = rawText.replace(/\|/g, '\n');
+    typingHeadline.textContent = '';
+    let charIndex = 0;
+    const typingSpeed = 70;
+    const startDelay = 500;
+    const resetDelay = 1800;
+    function type() {
+      if (charIndex <= text.length) {
+        typingHeadline.textContent = text.slice(0, charIndex);
+        charIndex += 1;
+        setTimeout(type, typingSpeed);
+      } else {
+        setTimeout(() => {
+          charIndex = 0;
+          typingHeadline.textContent = '';
+          setTimeout(type, typingSpeed);
+        }, resetDelay);
+      }
+    }
+    setTimeout(type, startDelay);
   }
 
   // ---- impact counters + bars (Resources page) ----
@@ -243,3 +257,153 @@ var LeafScene = function(el) {
     leaves.init();
     leaves.render();
   }
+
+// chart js
+    document.addEventListener("DOMContentLoaded", () => {
+      const svg = document.getElementById("donutChart");
+      const centerX = 300;
+      const centerY = 300;
+      const outerRadius = 180;
+      const innerRadius = 90;
+      const gapDegrees = 3; // Gap between slices
+
+      // Data for the 5 slices matching the color palette and layout
+      const slicesData = [
+        {
+          number: "01",
+          color: "#8cc63f", // Light Green
+          label: "Waste Diverted from Landfills",
+          align: "left"
+        },
+        {
+          number: "02",
+          color: "#00b094", // Teal / Cyan Green
+          label: "CO₂ Emissions Reduced",
+          align: "right"
+        },
+        {
+          number: "03",
+          color: "#008db9", // Medium Blue
+          label: "Plastic Recovered",
+          align: "right"
+        },
+        {
+          number: "04",
+          color: "#4653a0", // Purple-Blue
+          label: "Communities Served",
+          align: "right"
+        },
+        {
+          number: "05",
+          color: "#1892b0", // Dark Cyan
+          label: "Educational Campaigns Conducted",
+          align: "left"
+        }
+      ];
+
+      const totalSlices = slicesData.length;
+      const sliceAngle = 360 / totalSlices;
+      
+      // Offset start angle so section 01 and 02 split at the top center (-90deg)
+      const startAngleOffset = -90;
+
+      // Helper: Convert Polar to Cartesian coordinates
+      function polarToCartesian(cx, cy, r, angleInDegrees) {
+        const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
+        return {
+          x: cx + r * Math.cos(angleInRadians),
+          y: cy + r * Math.sin(angleInRadians)
+        };
+      }
+
+      // Helper: Generate SVG Path for Donut Slice
+      function createDonutSlicePath(x, y, radiusInner, radiusOuter, startDeg, endDeg) {
+        const outerStart = polarToCartesian(x, y, radiusOuter, endDeg);
+        const outerEnd = polarToCartesian(x, y, radiusOuter, startDeg);
+        const innerStart = polarToCartesian(x, y, radiusInner, startDeg);
+        const innerEnd = polarToCartesian(x, y, radiusInner, endDeg);
+
+        const largeArcFlag = endDeg - startDeg <= 180 ? "0" : "1";
+
+        return [
+          `M ${outerStart.x} ${outerStart.y}`,
+          `A ${radiusOuter} ${radiusOuter} 0 ${largeArcFlag} 0 ${outerEnd.x} ${outerEnd.y}`,
+          `L ${innerStart.x} ${innerStart.y}`,
+          `A ${radiusInner} ${radiusInner} 0 ${largeArcFlag} 1 ${innerEnd.x} ${innerEnd.y}`,
+          "Z"
+        ].join(" ");
+      }
+
+      // Render Slices, Text, and Pointer Lines
+      slicesData.forEach((data, index) => {
+        const startDeg = startAngleOffset + index * sliceAngle + gapDegrees / 2;
+        const endDeg = startAngleOffset + (index + 1) * sliceAngle - gapDegrees / 2;
+        const midDeg = (startDeg + endDeg) / 2;
+
+        // Create Path Element
+        const pathD = createDonutSlicePath(centerX, centerY, innerRadius, outerRadius, startDeg, endDeg);
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", pathD);
+        path.setAttribute("fill", data.color);
+        path.setAttribute("class", "slice");
+        svg.appendChild(path);
+
+        // Number Position inside the wedge
+        const midRadius = (innerRadius + outerRadius) / 2;
+        const textPos = polarToCartesian(centerX, centerY, midRadius, midDeg);
+
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", textPos.x);
+        text.setAttribute("y", textPos.y);
+        text.setAttribute("class", "slice-text");
+        text.textContent = data.number;
+        svg.appendChild(text);
+
+        // Pointer Line setup
+        const lineStart = polarToCartesian(centerX, centerY, outerRadius + 5, midDeg);
+        const lineMid = polarToCartesian(centerX, centerY, outerRadius + 40, midDeg);
+
+        const isRight = midDeg > -90 && midDeg < 90;
+        const lineEnd = {
+          x: isRight ? lineMid.x + 50 : lineMid.x - 50,
+          y: lineMid.y
+        };
+
+        // Draw Line
+        const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+        polyline.setAttribute("points", `${lineStart.x},${lineStart.y} ${lineMid.x},${lineMid.y} ${lineEnd.x},${lineEnd.y}`);
+        polyline.setAttribute("fill", "none");
+        polyline.setAttribute("stroke", data.color);
+        polyline.setAttribute("class", "pointer-line");
+        svg.appendChild(polyline);
+
+        // Label Text beside Pointer Line
+        const labelText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        const textAnchor = isRight ? "start" : "end";
+        const labelX = isRight ? lineEnd.x + 8 : labelXOffset = lineEnd.x - 8;
+
+        labelText.setAttribute("x", labelX);
+        labelText.setAttribute("y", lineEnd.y + 4);
+        labelText.setAttribute("text-anchor", textAnchor);
+        labelText.setAttribute("class", "label-text");
+
+        // Break label text into 2 lines for readability
+        const words = data.label.split(" ");
+        const line1 = words.slice(0, Math.ceil(words.length / 2)).join(" ");
+        const line2 = words.slice(Math.ceil(words.length / 2)).join(" ");
+
+        const tspan1 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan1.setAttribute("x", labelX);
+        tspan1.setAttribute("dy", "-0.3em");
+        tspan1.textContent = line1;
+
+        const tspan2 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan2.setAttribute("x", labelX);
+        tspan2.setAttribute("dy", "1.2em");
+        tspan2.textContent = line2;
+
+        labelText.appendChild(tspan1);
+        labelText.appendChild(tspan2);
+        svg.appendChild(labelText);
+      });
+    });

@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+           
           </li>
           <li class="nav-item">
             <div class="dropdown">
@@ -84,37 +84,40 @@
 <!-- ============ HERO ============ -->
  
  <div id="home-page-hero-banner" class="carousel slide">
-  <div class="carousel-indicators">
+  <!-- <div class="carousel-indicators">
     <button type="button" data-bs-target="#home-page-hero-banner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#home-page-hero-banner" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#home-page-hero-banner" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
+  </div> -->
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="falling-leaves"></div>
-      <img src="assets/images/banners/recyle-bi.png" alt="" class="reyecle-imge">
-      <img src="assets/images/banners/home-page-banner.png" class="banner_image" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Building India's Circular Economy, One Resource at a Time.</h1>
-        <p class="text-black mb-5">We transform waste into valuable resources through technology, responsible recycling, community engagement, and data-driven sustainability solutions. From households and corporates to municipalities, Circular Country Pvt.Ltd helps create cleaner, carbon neutral cities and a greener future.</p>
-      <div class="button">
-        <button class="btn btn-primary"><i class="fa-solid fa-handshake"></i>Partner With Us</button>
-        <button class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i>Explore Our Services</button>
+      <div class="video-div">
+        <video class="w-100 banner-video"autoplay muted loop playsinline class="banner_video">
+          <source src="assets/images/video/waste_swirlin.mp4" type="video/mp4"> 
+        </video>
       </div>
+      <div class="carousel-caption text-aligns d-none d-md-block">
+        <h1 id="heroTypingText" class="typing-text" data-text="Building India's Circular Economy,|One Resource at a Time."></h1>
+        <p class="text-black mb-5">We transform waste into valuable resources through technology, responsible recycling, community engagement, and data-driven sustainability solutions. From households and corporates to municipalities, Circular Country Pvt.Ltd helps create cleaner, carbon neutral cities and a greener future.</p>
+        <div class="button">
+          <button class="btn btn-primary"><i class="fa-solid fa-handshake"></i>Partner With Us</button>
+          <button class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i>Explore Our Services</button>
+        </div>
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#home-page-hero-banner" data-bs-slide="prev">
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#home-page-hero-banner" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#home-page-hero-banner" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
-  </button>
+  </button> -->
 </div>
 
-<div class="marquee-strip">
+<!-- <div class="marquee-strip">
   <div class="marquee-track">
     <span>WASTE COLLECTION <i class="fa-solid fa-circle"></i></span>
     <span>AI SEGREGATION <i class="fa-solid fa-circle"></i></span>
@@ -129,10 +132,10 @@
     <span>CARBON CREDITS <i class="fa-solid fa-circle"></i></span>
     <span>UPCYCLED MARKETPLACE <i class="fa-solid fa-circle"></i></span>
   </div>
-</div>
+</div> -->
 
 <!-- ============ PAGE LINK TEASERS ============ -->
-<section>
+<!-- <section>
   <div class="wrap">
     <div class="section-head">
       <span class="loop-eyebrow"><span class="ring"></span>Find Your Way Around</span>
@@ -166,25 +169,80 @@
       </a>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ============ QUICK ABOUT STRIP ============ -->
 <section class="sage">
-  <div class="wrap about-grid" style="align-items:center;">
-    <div>
+  <div class="wrap" style="align-items:center;">
+    <div class="text-center w-100">
       <span class="loop-eyebrow"><span class="ring"></span>Our Purpose</span>
       <h2>Waste is not the end of a product's life—it is the beginning of a new one.</h2>
       <p style="margin-top:18px; font-size:16.5px; color:var(--ink-soft);">At Circular Country Pvt.Ltd, we are building an ecosystem where every recyclable material is recovered, every stakeholder benefits, and every action contributes to a more sustainable planet.</p>
-      <a href="about.html" class="btn btn-dark" style="margin-top:28px;">More About Us <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <div class="about-card reveal">
-      <p class="tag-line">Circular Country Pvt.Ltd is into :</p>
-      <div class="about-card-row">Waste Collection</div>
-      <div class="about-card-row">Recycling & Upcycling</div>
-      <div class="about-card-row">Extended Producer Responsibility (EPR)</div>
-      <div class="about-card-row">ESG & Sustainability Solutions</div>
-      <div class="about-card-row">Carbon Credit Advisory</div>
-      <div class="about-card-row">Brand Reach & Market Research Campaigns</div>
+      <!-- <a href="about.html" class="btn btn-dark" style="margin-top:28px;">More About Us <i class="fa-solid fa-arrow-right"></i></a> -->
+   
+      <p class="tag-linsse">Circular Country Pvt.Ltd is into :</p>
+      <div class="row listing-icons">
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/Waste-collection.png" alt="Waste Collection">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">Waste Collection</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/Recycling-Upcycling.png" alt="Recycling & Upcycling">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">Recycling & Upcycling</h3>
+           </div>
+          </div>
+        </div>
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/Market-Research-Brand-Reach-Campaigns.png" alt="Market Research & Brand Reach Campaigns">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">Market Research & Brand Reach Campaigns</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/EPR-Services.png" alt="EPR Services">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">EPR Services </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/Carbon-Credits.png" alt="Sustainability & ESG Platform">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">Sustainability & ESG Platform (PlanetWise)</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="home-page-icons">
+            <div class="what-we-do-homes">
+              <img class="what-we-do-home" src="assets/images/icons/Sustainability-&-ESG-Platform.png" alt="Carbon Credits">
+            </div>
+            <div class="what-we-do-content-home">
+              <h3 class="what-we-do-homesa">Carbon Credits</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -193,34 +251,20 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <span class="loop-eyebrow"><span class="ring"></span>Our Impact</span>
-      <h2>The numbers behind the mission.</h2>
+      <h2>Our Impact</h2>
       <p>Together, we're creating measurable environmental change through innovation, partnerships, and community participation.</p>
     </div>
-    <div class="impact-grid">
-      <div class="impact-stat reveal">
-        <div class="impact-stat-top"><i class="fa-solid fa-weight-hanging"></i><span>TONNES</span></div>
-        <div class="bignum mono">12,400+</div>
-        <div class="label">Waste Processed</div>
+    <div class="chart-section">
+      <div class="chart-container">
+        <svg id="donutChart" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <!-- SVG dynamic elements generated by JS -->
+        </svg>
+
+        <!-- Center Content Overlay -->
+        <div class="center-content">
+          <div class="center-titlea"><h3 class="center-title">Our Impact<h3></div>
+        </div>
       </div>
-      <div class="impact-stat reveal">
-        <div class="impact-stat-top"><i class="fa-solid fa-mound"></i><span>DIVERSION</span></div>
-        <div class="bignum mono">8,900 T</div>
-        <div class="label">Landfill Avoided</div>
-      </div>
-      <div class="impact-stat reveal">
-        <div class="impact-stat-top"><i class="fa-solid fa-temperature-three-quarters"></i><span>EMISSIONS</span></div>
-        <div class="bignum mono">5,600 T</div>
-        <div class="label">CO&#8322; Emissions Reduced</div>
-      </div>
-      <div class="impact-stat reveal">
-        <div class="impact-stat-top"><i class="fa-solid fa-bottle-water"></i><span>RECOVERY</span></div>
-        <div class="bignum mono">3,200 T</div>
-        <div class="label">Plastic Recovered</div>
-      </div>
-    </div>
-    <div style="margin-top:30px;">
-      <a href="what-we-do.html" class="btn btn-ghost">View Full Impact Dashboard <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
@@ -251,7 +295,7 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
-    <div class="footer-top">
+    <!-- <div class="footer-top">
       <div class="footer-brand">
         <div class="brand brand-dark">
           <img src="assets/images/logo/Circular-sCountry-bg.png" alt="Circular Country Logo" class="footer-logo">
@@ -284,7 +328,7 @@
         <a href="mailto:support@binwin.earth">support@binwin.earth</a>
         <p>Bangalore, India</p>
       </div>
-    </div>
+    </div> -->
     <div class="footer-bottom">
       <span>&copy; 2026 Circular Country Private Limited. All rights reserved.</span>
       <div class="legal-links">
