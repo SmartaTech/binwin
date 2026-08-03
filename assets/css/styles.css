@@ -401,7 +401,6 @@ footer{background:var(--moss); color:rgba(251,249,243,0.72); padding:20px 0 30px
 
 .impact-dashboard{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:50px;}
 .impact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:10px;}
-@media(max-width:900px){.impact-grid{grid-template-columns:repeat(2,1fr);}}
 .impact-stat{background:var(--paper-2); display:flex; flex-direction:column; align-items: center; justify-content: center; border:1px solid var(--line); border-radius:14px; padding:24px 22px;}
 .impact-chart{margin-bottom:18px;}
 .impact-ring{
@@ -917,10 +916,12 @@ img.reyecle-imge {
 }
 
 .center-title {
-  font-size: 30px;
+  font-size: 14px;
   font-weight: 700;
   color: #2b5b84;
   line-height: 1.2;
+  width: 40%;
+  margin: auto;
 }
 
 /* Slice styling */
@@ -949,7 +950,104 @@ img.reyecle-imge {
 }
 
 .label-text {
-  font-size: 11px;
+  font-size: 12px;
   fill: #555555;
-  font-weight: 500;
+  font-weight: 800;
+}
+
+@media screen  and (min-device-width: 320px)  and (max-device-width: 767px)  and (-webkit-min-device-pixel-ratio: 1) { 
+  .text-aligns{ 
+    padding: 6%; 
+  }
+  .logo-size{
+    width: 90px;
+    position: fixed;
+    top: 0%;
+    left: 5%;
+    margin: 11px 0 0 0;
+  }
+  .navbar{
+    padding:16px;
+  }
+  #navbarNav {
+    margin: 20% 0 20% 0;
+  }
+  .button {
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+  }
+  .typing-text{
+    height:150px;
+  }
+  .listing-icons {
+    flex-direction: column;
+  }
+  .home-page-icons {
+    margin: 0 0% 18%;
+  }
+  .chart-container{
+    max-width:90%;
+  }
+  .mobile-view-impact{
+    padding: 0px;
+  }
+  .mobile-alt {
+    padding: 0%;
+  }
+  .about-right-content > h1 {
+    font-size: 28px;
+  } 
+  .lead{
+    font-size: 14px;
+  }
+  .about-two-section {
+    flex-direction: column-reverse;
+  }
+  .about-hero-image {
+    margin: 0 0 10% 0;
+  }
+  .text-center.w-75.mx-auto.mb-5 {
+    width: 100% !important;
+  }
+  .firt-phara-text{
+    font-size :13.5px;
+  }
+  img.socila-sect-bg{
+    height:40vh;
+  }
+  .icon-tiless > h2 {
+    font-size: 17px !important;
+  }
+  p {
+    font-size: 15px;
+  }
+  .marketplace-teaser > .marketplace-banner, .marketplace-teaser{
+    height:80vh;
+  }
+  .imag-market-place > img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    object-position: left;
+  }
+  .marketplace-banner{
+    padding: 26px;
+  }
+  .impact-grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .impact-stat{
+    height: 160px;
+  }
+  .impact-stat .label{
+    font-size: 15px;
+  }
+  img.content-capin:hover {
+    position: initial;
+    width: 100% !important;
+  }
+  .partner-panel{
+    padding: 20px;
+  }
 }
