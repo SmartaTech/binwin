@@ -597,6 +597,7 @@ ul.navbar-nav {
 li.nav-item {
   display: flex;
   align-items: center;
+  width :max-content;
 }
 div#home-page-hero-banner{
   margin: 75px 0 0 0;
