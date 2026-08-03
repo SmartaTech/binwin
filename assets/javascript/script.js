@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { number: "02", color: "#00b094", label: "CO₂ Emissions Reduced" },
     { number: "03", color: "#008db9", label: "Plastic Recovered" },
     { number: "04", color: "#4653a0", label: "Communities Served" },
-    { number: "05", color: "#1892b0", label: "Educational<br> Campaigns Conducted" }
+    { number: "05", color: "#1892b0", label: "Educational Campaigns Conducted" }
   ];
 
   const totalSlices = slicesData.length;
@@ -310,6 +310,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Render Slices, Text, and Pointer Lines
+  const legendContainer = document.querySelector('.impact-legend');
+  const legendList = legendContainer ? document.createElement('ul') : null;
+
   slicesData.forEach((data, index) => {
     const startDeg = startAngleOffset + index * sliceAngle + gapDegrees / 2;
     const endDeg = startAngleOffset + (index + 1) * sliceAngle - gapDegrees / 2;
@@ -386,5 +389,25 @@ document.addEventListener("DOMContentLoaded", () => {
     labelText.appendChild(tspan1);
     labelText.appendChild(tspan2);
     svg.appendChild(labelText);
+
+    if (legendList) {
+      const legendItem = document.createElement('li');
+      const legendMark = document.createElement('span');
+      legendMark.className = 'legend-mark';
+      legendMark.style.backgroundColor = data.color;
+      legendMark.textContent = data.number;
+
+      const legendLabel = document.createElement('p');
+      legendLabel.className = 'legend-label';
+      legendLabel.textContent = data.label;
+
+      legendItem.appendChild(legendMark);
+      legendItem.appendChild(legendLabel);
+      legendList.appendChild(legendItem);
+    }
   });
+
+  if (legendList && legendContainer) {
+    legendContainer.appendChild(legendList);
+  }
 });

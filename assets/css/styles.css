@@ -956,6 +956,83 @@ img.reyecle-imge {
   font-weight: 800;
 }
 
+.impact-legend {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.impact-legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(28, 43, 30, 0.12);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.impact-legend li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(28, 43, 30, 0.08);
+}
+
+.impact-legend li:last-child {
+  border-bottom: none;
+}
+
+.legend-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.legend-label {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .impact-section .chart-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .impact-section .chart-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .impact-legend {
+    display: block;
+  }
+
+  .impact-section .label-text,
+  .impact-section .pointer-line {
+    display: none;
+  }
+
+  .impact-section .center-content {
+    width: 90%;
+    padding: 14px 12px;
+  }
+
+  .impact-section .center-title {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+}
+
 @media screen  and (min-device-width: 320px)  and (max-device-width: 767px)  and (-webkit-min-device-pixel-ratio: 1) { 
   .text-aligns{ 
     padding: 6%; 
