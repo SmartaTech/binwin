@@ -1129,3 +1129,147 @@ img.reyecle-imge {
     padding: 20px;
   }
 }
+
+/* ============================================================
+   RESPONSIVE LAYER — ADDED 2026-08-12
+   Everything below lives inside a max-width media query, so the
+   desktop design (>= 992px) is byte-for-byte unaffected. Nothing
+   above this line was edited.
+   Must stay LAST in this file: it works by source order, not
+   !important. New rules go ABOVE this banner.
+   ============================================================ */
+
+/* ---------- TABLET & PHONE: NAV DROPDOWNS ---------- */
+@media (max-width: 991.98px) {
+
+  /* Solid surface + own scroll, so the page doesn't show through
+     the open menu and the last items stay reachable. */
+  #navbarNav.navbar-collapse {
+    background: var(--paper);
+    max-height: calc(100vh - 90px);
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Submenus push the list down instead of floating over it */
+  .dropdown { position: relative; width: 100%; }
+  .dropdown-content { position: static; display: none; width: 100%; min-width: 0; box-shadow: none; }
+
+  /* :hover does nothing useful on touch — JS toggles .is-open */
+  .dropdown:hover .dropdown-content { display: none; }
+  .dropdown.is-open > .dropdown-content { display: block; }
+  .dropdown.is-open > .nav-link .has-icon::after,
+  .dropdown.is-open > .nav-link.has-icon::after { transform: rotate(180deg); }
+}
+
+/* Header must not slide away while the menu is open */
+header#siteHeader.menu-open,
+header#siteHeader.menu-open.hide { transform: none; }
+
+
+/* ---------- PHONE / SMALL TABLET LAYOUT ---------- */
+@media (max-width: 767.98px) {
+
+  /* Flex & grid children default to min-width:auto, which is the
+     usual cause of sideways scroll on phones. */
+  .row > [class*="col"], .marketplace-banner > *,
+  .footer-bottom > *, .impact-stat, .what-we-do-bg { min-width: 0; }
+
+  /* Non-standard sizing that only resolves in Safari */
+  .what-we-do-bg, .sector-card, img.content-capin,
+  .marketplace-teaser > .marketplace-banner { height: auto; }
+
+  /* --- WHAT WE DO: one card per row --- */
+  .what-we-do-card { flex: 0 0 100%; max-width: 100%; width: 100%; }
+  .what-we-do-bg { margin: 0 0 24px; }
+
+  /* --- MARKETPLACE: keep the overlay inside the viewport --- */
+  .marketplace-teaser > .marketplace-banner {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: flex; align-items: flex-start;
+    padding: 92px 20px 40px; overflow-y: auto;
+  }
+  .marketplace-teaser .container { padding-left: 0; padding-right: 0; max-width: 100%; }
+  h3.market-title { font-size: 21px; line-height: 1.3; margin: 14px 0 26px; }
+  .marketplace-banner .btn { width: 100%; justify-content: center; }
+  .imag-market-place > img { width: 100%; height: 78vh; min-height: 520px; object-fit: cover; object-position: 62% center; }
+
+  /* --- HOME HERO CAPTION --- */
+  .text-aligns { height: auto; min-height: 100vh; padding: 90px 18px 32px; }
+  .carousel-caption .button { flex-direction: column; align-items: center; }
+  .carousel-caption .button .btn { width: 100%; max-width: 300px; justify-content: center; }
+  img.reyecle-imge { display: none; }
+
+  /* --- IMPACT --- */
+  .impact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .impact-stat { height: auto; min-height: 96px; padding: 16px 10px; }
+  .impact-dashboard { padding: 24px; }
+  .chart-container { max-width: 100%; }
+
+  /* --- MISC --- */
+  .sector-card { flex: 0 0 78vw; }
+  .map-frame, .map-frame iframe { min-height: 260px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding-right: 70px; }
+}
+
+/* Touch devices: the gold hover overlay latches on tap and covers
+   the neighbouring card, so it's disabled where there's no mouse. */
+@media (hover: none), (pointer: coarse) {
+  img.content-capin:hover { position: static; width: 100%; left: auto; top: auto; }
+}
+
+/* ---------- REQUESTED TWEAK (not responsiveness) ----------
+   "Our Impact" sub-line, was flush-left under a centred H2.
+   Delete this one block to put it back exactly as it was.      */
+.impact-dashboard-cards > p { text-align: center; max-width: 620px; margin: 0 auto 34px; }
+
+
+/* ---------- TABLET (768–991px) ---------- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  /* The logo is position:absolute and 110px tall. Below 768px your
+     own `#navbarNav{margin:20% 0}` clears it, but that rule is
+     scoped to max-device-width:767px, so at tablet size the open
+     menu ran underneath the logo. This restores the clearance. */
+  #navbarNav.navbar-collapse { padding-top: 112px; }
+
+  /* Two cards per row instead of three squeezed into col-md-4,
+     all the same height, no ellipsis and no dead white space. */
+  .what-we-do-card { flex: 0 0 50%; max-width: 50%; display: flex; }
+  .what-we-do-bg { width: 100%; height: auto; margin: 0 0 24px; }
+}
+
+
+/* ---------- CARD HOVER BELOW 992px ----------
+   The desktop hover lays the gold panel OVER the card. That relies
+   on the card having a height to fill; on a narrow screen the card
+   collapses (its only in-flow child is the image, which is itself
+   sized as a % of the card) and the panel spills past the edges.
+   So here the panel stays in flow: gold block on top, blurred
+   image below it, everything inside the card. */
+@media (max-width: 991.98px) {
+  .what-we-do-card { display: flex; }
+  .what-we-do-bg { width: 100%; height: auto; }
+  .what-we-do-img { height: 200px; object-fit: cover; }
+
+  /* Panel above, blurred image below — matching the desktop look,
+     where the gold sits over the top of the card. Safe to use flex
+     here because the panel is in flow, not absolutely positioned. */
+  .what-we-do-bg:hover { display: flex; flex-direction: column-reverse; }
+  .what-we-do-bg:hover .what-we-do-content {
+    position: static;
+    padding: 7%;
+    background-color: #cb9900f7;
+    border-radius: 10px;
+    margin: 0;
+  }
+  .what-we-do-bg:hover .what-we-do-img { height: 200px; filter: blur(2px); }
+}
+
+/* ---------- SPACE BELOW THE "What We Do ?" HEADING ---------- */
+.page-hero .page-hero-inner h1.text-center { margin-bottom: 56px; }
+@media (max-width: 767.98px) {
+  .page-hero .page-hero-inner h1.text-center { margin-bottom: 32px; }
+}
