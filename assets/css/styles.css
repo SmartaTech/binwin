@@ -1194,7 +1194,9 @@ header#siteHeader.menu-open.hide { transform: none; }
   .marketplace-teaser .container { padding-left: 0; padding-right: 0; max-width: 100%; }
   h3.market-title { font-size: 21px; line-height: 1.3; margin: 14px 0 26px; }
   .marketplace-banner .btn { width: 100%; justify-content: center; }
-  .imag-market-place > img { width: 100%; height: 78vh; min-height: 520px; object-fit: cover; object-position: 62% center; }
+  /* your 80vh rule left the footer short of the viewport bottom */
+  .marketplace-teaser { height: auto; min-height: calc(100vh - 96px); }
+  .imag-market-place > img { width: 100%; height: calc(100vh - 96px); min-height: 520px; object-fit: cover; object-position: 62% center; }
 
   /* --- HOME HERO CAPTION --- */
   .text-aligns { height: auto; min-height: 100vh; padding: 90px 18px 32px; }
@@ -1272,4 +1274,32 @@ header#siteHeader.menu-open.hide { transform: none; }
 .page-hero .page-hero-inner h1.text-center { margin-bottom: 56px; }
 @media (max-width: 767.98px) {
   .page-hero .page-hero-inner h1.text-center { margin-bottom: 32px; }
+}
+
+/* ---------- MARKETPLACE PAGE: TABLET & DESKTOP ----------
+   The banner is absolutely positioned over the photo, so it had no
+   clearance for the fixed header (the badge sat behind the logo),
+   and the photo was aspect-sized — on a short, wide window that
+   left the footer floating with blank space beneath it. */
+@media (min-width: 768px) {
+  .imag-market-place > img {
+    height: calc(100vh - 96px);
+    min-height: 520px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .marketplace-teaser > .marketplace-banner {
+    display: flex;
+    align-items: center;
+    padding: 130px 40px 48px;
+    overflow-y: auto;
+  }
+  .marketplace-teaser > .marketplace-banner > div { width: 100%; }
+  h3.market-title { max-width: 46ch; }
+}
+
+/* Between tablet and desktop the headline needs to scale down or it
+   crowds the photo. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  h3.market-title { font-size: clamp(20px, 2.6vw, 30px); line-height: 1.3; }
 }
