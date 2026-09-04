@@ -1588,3 +1588,11 @@ header#siteHeader.menu-open.hide { transform: none; }
         min-height: auto;
     }
 }
+
+section.cts_buttons {
+    padding: 14px 0;
+    background: var(--sage);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
