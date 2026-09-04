@@ -1303,3 +1303,206 @@ header#siteHeader.menu-open.hide { transform: none; }
 @media (min-width: 768px) and (max-width: 1199.98px) {
   h3.market-title { font-size: clamp(20px, 2.6vw, 30px); line-height: 1.3; }
 }
+
+/* =========================================
+   OUR TEAM - MODERN TEAM CARDS
+========================================= */
+
+#our-team {
+    padding: 20px 0 70px;
+}
+
+/* Team heading */
+#our-team .text-center {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#our-team .text-center h4 {
+    font-family: "Fraunces", serif;
+    font-size: 42px !important;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--ink);
+}
+
+#our-team .firt-phara-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+}
+
+#our-team .about-teamss {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+}
+
+/* Team row */
+#our-team .team-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 45px;
+}
+
+/* Individual card */
+#our-team .team-cards {
+    flex: 0 0 calc(33.333% - 28px);
+    max-width: 360px;
+    margin: 0 !important;
+    padding: 0 0 28px;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Hover */
+#our-team .team-cards:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    border-color: rgba(50, 90, 60, 0.15);
+}
+
+/* Profile image container */
+#our-team .team-mate-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    background: #f4f3ee;
+    transition: transform 0.4s ease;
+}
+
+/* Image zoom on hover */
+#our-team .team-cards:hover .team-mate-image {
+    transform: scale(1.025);
+}
+
+/* Name */
+#our-team .team-name-title {
+    font-family: "Fraunces", serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 20px 20px 5px;
+    color: var(--ink);
+}
+
+/* Role */
+#our-team .team-role-title {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #52705a;
+    line-height: 1.5;
+    margin: 0 20px 12px;
+}
+
+/* Founding Team */
+#our-team .team-role-title span {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    margin-top: 4px;
+    border-radius: 20px;
+    background: #edf3ed;
+    color: #52705a;
+}
+
+/* Description */
+#our-team .team-cards > p:last-child {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 25px;
+}
+
+/* =========================================
+   SECOND ROW
+========================================= */
+
+/*
+   With 5 members:
+   3 cards on first row
+   2 cards centered on second row
+*/
+
+#our-team .team-cards:nth-child(4),
+#our-team .team-cards:nth-child(5) {
+    margin-top: 5px !important;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    #our-team .team-cards {
+        flex: 0 0 calc(50% - 20px);
+        max-width: 380px;
+    }
+
+    #our-team .team-mate-image {
+        height: 300px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 575px) {
+
+    #our-team {
+        padding-bottom: 45px;
+    }
+
+    #our-team .text-center {
+        width: 100% !important;
+        padding: 0 15px;
+    }
+
+    #our-team .text-center h4 {
+        font-size: 34px !important;
+    }
+
+    #our-team .firt-phara-text {
+        font-size: 13px;
+    }
+
+    #our-team .about-teamss {
+        font-size: 14px;
+    }
+
+    #our-team .team-row {
+        gap: 20px;
+        margin-top: 30px;
+        padding: 0 15px;
+    }
+
+    #our-team .team-cards {
+        flex: 0 0 100%;
+        max-width: 390px;
+    }
+
+    #our-team .team-mate-image {
+        height: 320px;
+    }
+
+}
