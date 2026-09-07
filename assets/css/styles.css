@@ -1596,3 +1596,10 @@ section.cts_buttons {
     justify-content: center;
     align-items: center;
 }
+
+.cts_div {
+    text-align: center;
+    padding: 2% 17%;
+    position: relative;
+    left: 50px;
+}
