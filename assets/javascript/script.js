@@ -6,6 +6,21 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  fetch('layouts/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('header_html').innerHTML = data;
+      // Header markup only exists in the DOM from this point on,
+      // so the nav/dropdown behaviour must be wired up here.
+      if (typeof initMobileNav === 'function') initMobileNav();
+    });
+  
+  fetch('layouts/footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer_html').innerHTML = data;
+    });
+
   // ---- mobile drawer ----
   const burger = document.getElementById('burgerBtn');
   const drawer = document.getElementById('drawer');
@@ -414,15 +429,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ============================================================
 // MOBILE NAV BEHAVIOUR — ADDED 2026-08-12
-// Self-contained. Only affects screens under 992px.
+// Only affects screens under 992px.
+// IMPORTANT: header.html is injected via fetch(), so this can't
+// run as a plain self-executing IIFE at parse time — the header
+// (and #navbarNav) won't exist in the DOM yet. Instead it's
+// defined as a function and invoked once the fetch() callback
+// above has actually inserted the header markup. It guards
+// against being called twice (e.g. if you ever add retry logic).
 // ============================================================
-(function () {
+var initMobileNav = (function () {
   'use strict';
-  var MOBILE = '(max-width: 991.98px)';
-  var header = document.getElementById('siteHeader');
-  var panel = document.getElementById('navbarNav');
-  if (!header || !panel) return;
-  var isMobile = function () { return window.matchMedia(MOBILE).matches; };
+  var initialized = false;
+
+  return function initMobileNav() {
+    if (initialized) return;
+    var MOBILE = '(max-width: 991.98px)';
+    var header = document.getElementById('siteHeader');
+    var panel = document.getElementById('navbarNav');
+    if (!header || !panel) return;
+    initialized = true;
+    var isMobile = function () { return window.matchMedia(MOBILE).matches; };
 
   function closeAll() {
     panel.querySelectorAll('.dropdown.is-open').forEach(function (d) {
@@ -439,8 +465,11 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.addEventListener('click', function (e) {
       if (!isMobile()) return;
-      if (!drop.classList.contains('is-open')) {
-        e.preventDefault(); e.stopPropagation();
+      e.preventDefault(); e.stopPropagation();
+      if (drop.classList.contains('is-open')) {
+        drop.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
         closeAll();
         drop.classList.add('is-open');
         toggle.setAttribute('aria-expanded', 'true');
@@ -470,10 +499,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener('click', function (e) {
     if (!isMobile() || !panel.classList.contains('show')) return;
-    if (header.contains(e.target)) return;
-    var C = window.bootstrap && window.bootstrap.Collapse;
-    var i = C && C.getInstance(panel);
-    if (i) i.hide();
+    if (!header.contains(e.target)) {
+      var C = window.bootstrap && window.bootstrap.Collapse;
+      var i = C && C.getInstance(panel);
+      if (i) i.hide();
+      return;
+    }
+    // Tapped inside the open mobile menu but outside any open dropdown
+    // (e.g. tapped a different top-level link) — close any open submenu.
+    if (!e.target.closest('.dropdown.is-open')) closeAll();
   });
 
   var t;
@@ -488,4 +522,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, 150);
   });
+  };
 })();
