@@ -1600,6 +1600,10 @@ section.cts_buttons {
 .cts_div {
     text-align: center;
     padding: 2% 17%;
-    position: relative;
-    left: 50px;
+}
+
+@media (max-width: 575px) {
+    .cts_div {
+        padding: 24px 20px;
+    }
 }
