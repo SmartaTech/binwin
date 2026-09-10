@@ -1618,3 +1618,7 @@ section.cts_buttons {
         padding: 24px 20px;
     }
 }
+
+.cls_hidden {
+  display: none;
+}
