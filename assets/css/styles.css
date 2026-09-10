@@ -851,12 +851,23 @@ img.reyecle-imge {
   justify-content: center;
   padding: 0 28%;
 }
-.banner-video, .video-div {
-  height: 100vh;
-  object-fit: cover;
-}
 .video-div {
-  height: 100vh;
+  width: 100%;
+  /* Cap height to the video's own native ratio (1080x1920 = 9:16).
+     This guarantees "cover" below never needs to overscale the
+     width to fill the height, so nothing gets cropped left/right
+     on any screen shape - mobile or laptop. The only trade-off is
+     the hero occasionally sits a bit shorter than a full 100vh on
+     very tall, narrow phones instead of cropping the video's sides. */
+  height: min(100vh, 177.78vw);
+  overflow: hidden;
+  position: relative;
+}
+.banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .what-we-do-home {
   margin: auto;
