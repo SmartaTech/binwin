@@ -1,0 +1,11 @@
+{
+  "name": "Circular Country Pvt Ltd",
+  "short_name": "Circular Country",
+  "icons": [
+    { "src": "/assets/images/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/images/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#FBF9F3",
+  "background_color": "#FBF9F3",
+  "display": "standalone"
+}
