@@ -113,41 +113,66 @@
             </div>
         </div>
 
-        <!-- Campaign videos -->
-        <div class="campaign-video-rail">
-          <div class="campaign-video-card">
-            <video controls playsinline muted preload="metadata" poster="assets/images/campaign/videos/captain-binwin-1-poster.jpg">
-              <source src="assets/images/campaign/videos/captain-binwin-1.mp4" type="video/mp4">
-            </video>
+        <!-- Campaign gallery: tabs -->
+        <div class="campaign-gallery">
+          <div class="campaign-tabs">
+            <button type="button" class="campaign-tab-btn active" data-tab="videos">Videos</button>
+            <button type="button" class="campaign-tab-btn" data-tab="photos">Photos</button>
           </div>
-          <div class="campaign-video-card">
-            <video controls playsinline muted preload="metadata" poster="assets/images/campaign/videos/captain-binwin-2-poster.jpg">
-              <source src="assets/images/campaign/videos/captain-binwin-2.mp4" type="video/mp4">
-            </video>
+
+          <div class="campaign-tab-panel active" data-panel="videos">
+            <div class="campaign-video-grid">
+              <div class="campaign-media-card" data-type="video"
+                   data-src="assets/images/campaign/videos/captain-binwin-1.mp4"
+                   data-poster="assets/images/campaign/videos/captain-binwin-1-poster.jpg">
+                <img src="assets/images/campaign/videos/captain-binwin-1-poster.jpg" alt="Captain BinWin campaign video 1" loading="lazy">
+                <span class="campaign-play"><i class="fa-solid fa-play"></i></span>
+              </div>
+              <div class="campaign-media-card" data-type="video"
+                   data-src="assets/images/campaign/videos/captain-binwin-2.mp4"
+                   data-poster="assets/images/campaign/videos/captain-binwin-2-poster.jpg">
+                <img src="assets/images/campaign/videos/captain-binwin-2-poster.jpg" alt="Captain BinWin campaign video 2" loading="lazy">
+                <span class="campaign-play"><i class="fa-solid fa-play"></i></span>
+              </div>
+              <div class="campaign-media-card" data-type="video"
+                   data-src="assets/images/campaign/videos/captain-binwin-3.mp4"
+                   data-poster="assets/images/campaign/videos/captain-binwin-3-poster.jpg">
+                <img src="assets/images/campaign/videos/captain-binwin-3-poster.jpg" alt="Captain BinWin campaign video 3" loading="lazy">
+                <span class="campaign-play"><i class="fa-solid fa-play"></i></span>
+              </div>
+              <div class="campaign-media-card" data-type="video"
+                   data-src="assets/images/campaign/videos/captain-binwin-4.mp4"
+                   data-poster="assets/images/campaign/videos/captain-binwin-4-poster.jpg">
+                <img src="assets/images/campaign/videos/captain-binwin-4-poster.jpg" alt="Captain BinWin campaign video 4" loading="lazy">
+                <span class="campaign-play"><i class="fa-solid fa-play"></i></span>
+              </div>
+            </div>
           </div>
-          <div class="campaign-video-card">
-            <video controls playsinline muted preload="metadata" poster="assets/images/campaign/videos/captain-binwin-3-poster.jpg">
-              <source src="assets/images/campaign/videos/captain-binwin-3.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="campaign-video-card">
-            <video controls playsinline muted preload="metadata" poster="assets/images/campaign/videos/captain-binwin-4-poster.jpg">
-              <source src="assets/images/campaign/videos/captain-binwin-4.mp4" type="video/mp4">
-            </video>
+
+          <div class="campaign-tab-panel" data-panel="photos">
+            <div class="campaign-photo-grid-new">
+              <div class="campaign-media-card" data-type="image"
+                   data-src="assets/images/campaign/photos/captain-binwin-poster-1.jpg">
+                <img src="assets/images/campaign/photos/captain-binwin-poster-1.jpg" alt="Captain BinWin certificate of appreciation campaign poster" loading="lazy">
+              </div>
+              <div class="campaign-media-card" data-type="image"
+                   data-src="assets/images/campaign/photos/captain-binwin-poster-2.jpg">
+                <img src="assets/images/campaign/photos/captain-binwin-poster-2.jpg" alt="Use BinWin - book a pickup and make an impact campaign poster" loading="lazy">
+              </div>
+              <div class="campaign-media-card" data-type="image"
+                   data-src="assets/images/campaign/photos/captain-binwin-poster-3.jpg">
+                <img src="assets/images/campaign/photos/captain-binwin-poster-3.jpg" alt="Give your waste to BinWin for free pickup campaign poster" loading="lazy">
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Campaign photos -->
-        <div class="campaign-photo-grid">
-          <a href="assets/images/campaign/photos/captain-binwin-poster-1.jpg" target="_blank" rel="noopener">
-            <img src="assets/images/campaign/photos/captain-binwin-poster-1.jpg" alt="Captain BinWin certificate of appreciation campaign poster">
-          </a>
-          <a href="assets/images/campaign/photos/captain-binwin-poster-2.jpg" target="_blank" rel="noopener">
-            <img src="assets/images/campaign/photos/captain-binwin-poster-2.jpg" alt="Use BinWin - book a pickup and make an impact campaign poster">
-          </a>
-          <a href="assets/images/campaign/photos/captain-binwin-poster-3.jpg" target="_blank" rel="noopener">
-            <img src="assets/images/campaign/photos/captain-binwin-poster-3.jpg" alt="Give your waste to BinWin for free pickup campaign poster">
-          </a>
+        <!-- Lightbox: opens on click, closes via button / backdrop / Esc -->
+        <div class="campaign-lightbox" id="campaignLightbox" aria-hidden="true">
+          <button type="button" class="campaign-lightbox-close" id="campaignLightboxClose" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="campaign-lightbox-inner" id="campaignLightboxInner"></div>
         </div>
     </div>
 </section>

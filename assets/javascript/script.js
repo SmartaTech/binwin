@@ -524,3 +524,72 @@ var initMobileNav = (function () {
   });
   };
 })();
+
+// ============================================================
+// CONTENT CAMPAIGN GALLERY (impact.html) — tabs + click-to-enlarge
+// Lives directly in the page markup (not fetched), so a normal
+// DOMContentLoaded listener is safe here.
+// ============================================================
+document.addEventListener('DOMContentLoaded', function () {
+  var tabBtns = document.querySelectorAll('.campaign-tab-btn');
+  var panels = document.querySelectorAll('.campaign-tab-panel');
+  var lightbox = document.getElementById('campaignLightbox');
+  if (!tabBtns.length || !lightbox) return;
+
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      tabBtns.forEach(function (b) { b.classList.remove('active'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.querySelector('.campaign-tab-panel[data-panel="' + btn.dataset.tab + '"]');
+      if (target) target.classList.add('active');
+    });
+  });
+
+  var inner = document.getElementById('campaignLightboxInner');
+  var closeBtn = document.getElementById('campaignLightboxClose');
+
+  function openLightbox(card) {
+    var type = card.getAttribute('data-type');
+    var src = card.getAttribute('data-src');
+    inner.innerHTML = '';
+    if (type === 'video') {
+      var video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      var poster = card.getAttribute('data-poster');
+      if (poster) video.poster = poster;
+      inner.appendChild(video);
+    } else {
+      var img = document.createElement('img');
+      img.src = src;
+      var cardImg = card.querySelector('img');
+      img.alt = cardImg ? cardImg.alt : '';
+      inner.appendChild(img);
+    }
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    inner.innerHTML = ''; // stops any playing video
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.campaign-media-card').forEach(function (card) {
+    card.addEventListener('click', function () { openLightbox(card); });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+});
