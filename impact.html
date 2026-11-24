@@ -57,13 +57,15 @@
 <!-- ============ HEADER ============ -->
 <div id="header_html"></div>
 <!-- ============ IMPACT ============ -->
-<section class="sage" id="our-impact">
+<section class="sage" id="our-impact" data-stats-root>
   <div class="wrap">
     <div class="impact-dashboard-cards">
         <h1 class="text-center mt-5 mb-5">Our Impact</h1>
         <p>Measuring Sustainability Through Data</p>
+        <p class="impact-updated">Last updated <time data-stat="updatedAt">—</time> IST</p>
         <div class="impact-grid">
             <div class="impact-stat">
+                <div class="value"><span data-stat="wasteCollectedKg">—</span> kg</div>
                 <div class="label">Waste Collected</div>
             </div>
             <div class="impact-stat">
@@ -76,22 +78,19 @@
                 <div class="label">Landfill Diversion</div>
             </div>
             <div class="impact-stat">
+                <div class="value"><span data-stat="co2SavedKg">—</span> kg</div>
                 <div class="label">CO₂ Emissions Reduced</div>
             </div>
             <div class="impact-stat">
+                <div class="value"><span data-stat="plasticRecoveredKg">—</span> kg</div>
                 <div class="label">Plastic Recovered</div>
             </div>
             <div class="impact-stat">
+                <div class="value"><span data-stat="treesEquivalent">—</span></div>
                 <div class="label">Trees Equivalent Saved</div>
             </div>
             <div class="impact-stat">
-                <div class="label">Circular Economy Index</div>
-            </div>
-            <div class="impact-stat">
                 <div class="label">Community Participation</div>
-            </div>
-            <div class="impact-stat">
-                <div class="label">ESG Performance Indicators</div>
             </div>
         </div>
     </div>
@@ -218,6 +217,7 @@
 
 <!-- ============ FOOTER ============ -->
 <script src="assets/javascript/script.js"></script>
+<script src="assets/javascript/impact-stats.js"></script>
 <script src="assets/javascript/bootstrap.js"></script>
 
 <div id="footer_html"></div>

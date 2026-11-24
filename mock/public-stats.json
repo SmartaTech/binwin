@@ -1,0 +1,74 @@
+{
+  "wasteCollectedKg": 12480.5,
+  "dryKg": 7320.2,
+  "wetKg": 3150.8,
+  "eWasteKg": 410.0,
+  "otherKg": 1599.5,
+  "plasticRecoveredKg": 2140.6,
+  "co2SavedKg": 19968.8,
+  "treesEquivalent": 1387,
+  "pickupsCompleted": 2315,
+  "updatedAt": "2026-10-29T09:40:00.000Z",
+  "wasteBreakdown": [
+    {
+      "category": "dry",
+      "label": "Dry (unsorted)",
+      "kg": 3148.0,
+      "percent": 25.2
+    },
+    {
+      "category": "wet",
+      "label": "Wet",
+      "kg": 2400.5,
+      "percent": 19.2
+    },
+    {
+      "category": "plastic",
+      "label": "Plastic",
+      "kg": 2140.6,
+      "percent": 17.2
+    },
+    {
+      "category": "mixed",
+      "label": "Mixed",
+      "kg": 1599.5,
+      "percent": 12.8
+    },
+    {
+      "category": "paper",
+      "label": "Paper",
+      "kg": 1350.4,
+      "percent": 10.8
+    },
+    {
+      "category": "organic",
+      "label": "Organic",
+      "kg": 750.3,
+      "percent": 6.0
+    },
+    {
+      "category": "metal",
+      "label": "Metal",
+      "kg": 420.3,
+      "percent": 3.4
+    },
+    {
+      "category": "e-waste",
+      "label": "E-waste",
+      "kg": 395.0,
+      "percent": 3.2
+    },
+    {
+      "category": "glass",
+      "label": "Glass",
+      "kg": 260.9,
+      "percent": 2.1
+    },
+    {
+      "category": "hazardous",
+      "label": "Hazardous",
+      "kg": 15.0,
+      "percent": 0.1
+    }
+  ]
+}

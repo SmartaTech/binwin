@@ -1715,3 +1715,11 @@ section.cts_buttons {
 @supports (padding: max(0px)) {
   .campaign-lightbox-close { top: max(22px, env(safe-area-inset-top)); }
 }
+/* ---- Live impact values (api/public-stats) ---- */
+.impact-stat .value{font-size:clamp(22px,2.4vw,30px); font-weight:700; color:var(--leaf-deep, #2d5a3d); font-variant-numeric:tabular-nums; text-align:center; line-height:1.1;}
+.impact-updated{text-align:center; font-size:13px; color:var(--ink-faint, #6b7a70); margin:-6px 0 24px;}
+.label-value{font-size:15px; font-weight:700; fill:var(--leaf-deep);}
+.legend-value{display:block; font-weight:700; color:var(--leaf-deep); margin-top:2px;}
+[data-stats-root][data-state="loading"] [data-stat]{opacity:.45;}
+
+.label-text .label-value{font-size:12px; font-weight:600; fill:var(--leaf-deep);}
